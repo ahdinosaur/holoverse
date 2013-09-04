@@ -6,11 +6,12 @@
 standard-app-packages
 insecure
 preserve-inputs
-bootstrap-3
 font-awesome
 animate-css
 iron-router
-accounts-ui-bootstrap-dropdown
 accounts-password
 momentjs
 d3
+spin
+bootstrap-3
+accounts-ui

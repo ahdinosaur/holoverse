@@ -43,6 +43,8 @@ Meteor.startup(function () {
   Hives.update(bsc_id, {
     $set: { children: [cloyne_id, davis_id]}
   })
+
+  Hives.insert({ name: 'East Bay Co-Housing'});
 });
 
 Meteor.publish('hives', function () {

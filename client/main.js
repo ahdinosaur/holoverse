@@ -10,6 +10,11 @@ Router.map(function () {
   });
   this.route('hive_all', {
     path: '/hives',
-    controller: HiveAllController
+    waitOn: Meteor.subscribe('hives')
+  });
+  this.route('hive_get', {
+    path: '/hives/:id',
+    data: function () { return Hives.findOne(this.params.id) },
+    waitOn: Meteor.subscribe('hives')
   });
 });

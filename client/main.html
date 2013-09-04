@@ -5,22 +5,7 @@
 <body>
 </body>
 
-<template name="layout">
-  <nav>
-    <ul>
-      <li>
-        <a href="{{pathFor 'home'}}">home</a>
-      </li>
-      <li>
-        <a href="{{pathFor 'hive_all'}}">hives</a>
-      </li>
-    </ul>
-  </nav>
 
-  <section class="main">
-    {{yield}}
-  </section>
-</template>
 
 <template name="home">
   <h1>welcome home!</h1>
@@ -28,7 +13,7 @@
 </template>
 
 <template name="loading">
-  <h1>loading...</h1>
+  {{> spinner}}
 </template>
 
 <template name="notFound">

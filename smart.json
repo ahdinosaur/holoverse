@@ -5,6 +5,7 @@
     "animate-css": {},
     "iron-router": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "momentjs": {}
+    "momentjs": {},
+    "spin": {}
   }
 }
