@@ -3,11 +3,50 @@
 </head>
 
 <body>
-  {{> hello}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="layout">
+  <nav>
+    <ul>
+      <li>
+        <a href="{{pathFor 'home'}}">home</a>
+      </li>
+      <li>
+        <a href="{{pathFor 'hives'}}">hives</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="main">
+    {{yield}}
+  </section>
+</template>
+
+<template name="home">
+  <h1>welcome home!</h1>
+  this is the homepage
+</template>
+
+<template name="hives">
+  <h1>here are the hives</h1>
+
+  <ul>
+    {{#each hives}}
+      <li>{{name}}</li>
+    {{/each}}
+  </ul>
+
+  <div name="circlePacking">
+    {{#constant}}
+
+    {{/constant}}
+  </div>
+</template>
+
+<template name="loading">
+  <h1>loading...</h1>
+</template>
+
+<template name="notFound">
+  <h1>not found!</h1>
 </template>
