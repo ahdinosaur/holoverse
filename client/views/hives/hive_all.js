@@ -1,21 +1,6 @@
-Router.configure({
-  layout: 'layout',
-  notFoundTemplate: 'notFound',
-  loadingTemplate: 'loading'
-});
 
-Router.map(function () {
-  this.route('home', {
-    path: '/'
-  });
-
-  this.route('hives', {
-    controller: 'HivesController'
-  });
-});
-
-HivesController = RouteController.extend({
-  template: 'hives',
+HiveAllController = RouteController.extend({
+  template: 'hive_all',
   waitOn: function () {
     return Meteor.subscribe('hives');
   },
@@ -25,7 +10,7 @@ HivesController = RouteController.extend({
     };
   },
   run: function () {
-    this.render('hives');
+    this.render('hive_all');
   }
 });
 
@@ -46,7 +31,7 @@ var hivesTree = function () {
   return hives;
 }
 
-Template.hives.rendered = function () {
+Template.hive_all.rendered = function () {
   var diameter = 960,
       format = d3.format(",d");
 

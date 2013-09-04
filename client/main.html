@@ -12,7 +12,7 @@
         <a href="{{pathFor 'home'}}">home</a>
       </li>
       <li>
-        <a href="{{pathFor 'hives'}}">hives</a>
+        <a href="{{pathFor 'hive_all'}}">hives</a>
       </li>
     </ul>
   </nav>
@@ -25,22 +25,6 @@
 <template name="home">
   <h1>welcome home!</h1>
   this is the homepage
-</template>
-
-<template name="hives">
-  <h1>here are the hives</h1>
-
-  <ul>
-    {{#each hives}}
-      <li>{{name}}</li>
-    {{/each}}
-  </ul>
-
-  <div name="circlePacking">
-    {{#constant}}
-
-    {{/constant}}
-  </div>
 </template>
 
 <template name="loading">
