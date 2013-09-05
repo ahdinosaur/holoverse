@@ -10,11 +10,14 @@ Router.map(function () {
   });
   this.route('hive_all', {
     path: '/hives',
-    waitOn: Meteor.subscribe('hives')
+    data: function () { return Hives.findOne('0'); },
+    waitOn: Meteor.subscribe('hives'),
+    template: Template.hive_get
   });
   this.route('hive_get', {
     path: '/hives/:id',
     data: function () { return Hives.findOne(this.params.id) },
-    waitOn: Meteor.subscribe('hives')
+    waitOn: Meteor.subscribe('hives'),
+    template: Template.hive_get
   });
 });

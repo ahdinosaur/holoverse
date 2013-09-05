@@ -7,16 +7,12 @@ var expandChildren = function (hive) {
     return hive
   };
 
-var metaRootName = 'universe';
-
 hivesTree = function (root) {
-  var metaRoot = { name: metaRootName }
   if (root) {
-    metaRoot.children = [expandChildren(root)];
+    return expandChildren(root);
   } else {
-    metaRoot.children = Hives.find({parent: null}).map(expandChildren);
+    return expandChildren(Hives.findOne({_id: '0'}));
   }
-  return metaRoot;
 };
 
 hivePacking = function (rootHive) {
@@ -45,7 +41,7 @@ hivePacking = function (rootHive) {
 
   node.append("circle")
       .attr("r", function(d) { return d.r; })
-      .on("click", function(d) { if (d.name !== metaRootName) location.href = "/hives/" + d._id; });
+      .on("click", function(d) { location.href = "/hives/" + d._id; });
 
   node.filter(function(d) { return !d.children; }).append("text")
       .attr("dy", ".3em")
