@@ -1,0 +1,42 @@
+<template name="navbar">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">toggle navigation</span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="#" class="navbar-brand">{{ holon.name }}</a>
+  </div>
+      
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-arrow-down"></span></a>
+        <ul class="dropdown-menu">
+          {{#eachChild holon }}
+          <li><a href="#">{{ name }}</a></li>
+          {{/eachChild }}
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <ul class="dropdown-menu">
+          {{#eachParent holon }}
+          <li><a href="#">{{ name }}</a></li>
+          {{/eachParent }}
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-arrow-right"></span></a>
+        <ul class="dropdown-menu">
+          {{#eachSibling holon }}
+          <li><a href="#">{{ name }}</a></li>
+          {{/eachSibling }}
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {{ loginButtons }}
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</template>

@@ -1,109 +1,117 @@
 Meteor.startup(function () {
   // code to run on server at startup
-  Hives.remove({});
+  Holons.remove({});
 
-  var allID = Hives.insert({
+  var allID = Holons.insert({
     _id: '0',
     name: 'all'
   });
 
-  var mikeyID = Hives.insert({
+  var mikeyID = Holons.insert({
     name: 'Mikey'
   });
-  var danielID = Hives.insert({
+  var danielID = Holons.insert({
     name: 'Daniel'
   });
-  var ernestID = Hives.insert({
+  var katieID = Holons.insert({
+    name: 'Katie'
+  });
+  var ernestID = Holons.insert({
     name: 'Ernest'
   });
-  var peterID = Hives.insert({
+  var peterID = Holons.insert({
     name: 'Peter'
   });
-  var cloyneID = Hives.insert({
+  var cloyneID = Holons.insert({
     name: 'Cloyne'
   });
-  var davisID = Hives.insert({
+  var davisID = Holons.insert({
     name: 'Davis'
   });
-  var bscID = Hives.insert({
+  var bscID = Holons.insert({
     name: 'BSC'
   });
-  Hives.update(mikeyID, {
-    $set: { parent: [cloyneID] }
+  Holons.update(mikeyID, {
+    $set: { parentIDs: [cloyneID] }
   });
-  Hives.update(danielID, {
-    $set: { parent: [cloyneID] }
+  Holons.update(danielID, {
+    $set: { parentIDs: [cloyneID] }
   });
-  Hives.update(ernestID, {
-    $set: { parent: [davisID] }
+  Holons.update(katieID, {
+    $set: { parentIDs: [cloyneID] }
   });
-  Hives.update(peterID, {
-    $set: { parent: [davisID] }
+  Holons.update(ernestID, {
+    $set: { parentIDs: [davisID] }
   });
-  Hives.update(cloyneID, {
-    $set: { parent: [bscID], children: [mikeyID, danielID] }
+  Holons.update(peterID, {
+    $set: { parentIDs: [davisID] }
   });
-  Hives.update(davisID, {
-    $set: { parent: [bscID], children: [ernestID, peterID] }
+  Holons.update(cloyneID, {
+    $set: { parentIDs: [bscID], childrenIDs: [mikeyID, danielID, katieID] }
   });
-  Hives.update(bscID, {
-    $set: { parent: [allID], children: [cloyneID, davisID]}
-  })
+  Holons.update(davisID, {
+    $set: { parentIDs: [bscID], childrenIDs: [ernestID, peterID] }
+  });
+  Holons.update(bscID, {
+    $set: { parentIDs: [allID], childrenIDs: [cloyneID, davisID]}
+  });
 
-  var recohoID = Hives.insert({
+  var recohoID = Holons.insert({
     name: 'Red Region Co-Housing'
   });
-  var cvcohoID = Hives.insert({
+  var cvcohoID = Holons.insert({
     name: 'Cityville Co-Housing'
   });
-  var hhcohoID = Hives.insert({
+  var hhcohoID = Holons.insert({
     name: 'Happy Hills Co-Housing'
   });
-  var lucianID = Hives.insert({
+  var lucianID = Holons.insert({
     name: 'Lucian'
   });
-  var samaraID = Hives.insert({
+  var samaraID = Holons.insert({
     name: 'Sumara'
   });
-  var caitlinID = Hives.insert({
+  var caitlinID = Holons.insert({
     name: 'Caitlin'
   });
-  var benedictID = Hives.insert({
+  var benedictID = Holons.insert({
     name: 'Benedict'
   });
-  var keatonID = Hives.insert({
+  var keatonID = Holons.insert({
     name: 'Keaton'
   })
-  Hives.update(recohoID, {
-    $set: { parent: [allID], children: [cvcohoID, hhcohoID]}
+  Holons.update(recohoID, {
+    $set: { parentIDs: [allID], childrenIDs: [cvcohoID, hhcohoID]}
   });
-  Hives.update(cvcohoID, {
-    $set: { parent: [recohoID], children: [lucianID, caitlinID, keatonID]}
+  Holons.update(cvcohoID, {
+    $set: { parentIDs: [recohoID], childrenIDs: [lucianID, caitlinID, keatonID]}
   });
-  Hives.update(hhcohoID, {
-    $set: { parent: [recohoID], children: [samaraID, benedictID] }
+  Holons.update(hhcohoID, {
+    $set: { parentIDs: [recohoID], childrenIDs: [samaraID, benedictID] }
   });
-  Hives.update(lucianID, {
-    $set: { parent: [cvcohoID] }
+  Holons.update(lucianID, {
+    $set: { parentIDs: [cvcohoID] }
   });
-  Hives.update(caitlinID, {
-    $set: { parent: [cvcohoID] }
+  Holons.update(caitlinID, {
+    $set: { parentIDs: [cvcohoID] }
   });
-  Hives.update(keatonID, {
-    $set: { parent: [cvcohoID] }
+  Holons.update(keatonID, {
+    $set: { parentIDs: [cvcohoID] }
   });
-  Hives.update(samaraID, {
-    $set: { parent: [hhcohoID] }
+  Holons.update(samaraID, {
+    $set: { parentIDs: [hhcohoID] }
   });
-  Hives.update(benedictID, {
-    $set: { parent: [hhcohoID] }
+  Holons.update(benedictID, {
+    $set: { parentIDs: [hhcohoID] }
   });
 
-  Hives.update(allID, {
-    $set: { children: [bscID, recohoID] }
+  Holons.update(allID, {
+    $set: { childrenIDs: [bscID, recohoID] }
   });
+
+  //console.log(process.env.MONGO_URL);
 });
 
-Meteor.publish('hives', function () {
-  return Hives.find();
+Meteor.publish('holons', function () {
+  return Holons.find();
 });

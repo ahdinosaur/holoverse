@@ -1,0 +1,8 @@
+- change holons from graph nodes to tree nodes
+  - id is complete /path/to/holon
+- implement chat channels within each holon (http://arunoda.github.io/meteor-streams/)
+- implement things (things @ thingtracker.net)
+- implement resources (acl)
+- implement messages
+  - implement query messages and response messages
+- implement events

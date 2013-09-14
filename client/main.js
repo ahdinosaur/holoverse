@@ -1,23 +1,41 @@
 Router.configure({
   layout: 'layout',
   notFoundTemplate: 'notFound',
-  loadingTemplate: 'loading'
+  loadingTemplate: 'loading',
+  renderTemplates: {
+    'navbar': {to: 'navbar'}
+  }
 });
 
 Router.map(function () {
   this.route('home', {
-    path: '/'
+    path: '/',
+    data: function () {
+      return {
+        holon: Holons.findOne('0')
+      };
+    },
+    waitOn: Meteor.subscribe('holons'),
+    template: Template.holon_get
   });
   this.route('hive_all', {
-    path: '/hives',
-    data: function () { return Hives.findOne('0'); },
-    waitOn: Meteor.subscribe('hives'),
-    template: Template.hive_get
+    path: '/holons',
+    data: function () {
+      return {
+        holon: Holons.findOne('0')
+      };
+    },
+    waitOn: Meteor.subscribe('holons'),
+    template: Template.holon_get
   });
-  this.route('hive_get', {
-    path: '/hives/:id',
-    data: function () { return Hives.findOne(this.params.id) },
-    waitOn: Meteor.subscribe('hives'),
-    template: Template.hive_get
+  this.route('holon_get', {
+    path: '/holons/:id',
+    data: function () {
+      return {
+        holon: Holons.findOne(this.params.id)
+      };
+    },
+    waitOn: Meteor.subscribe('holons'),
+    template: Template.holon_get
   });
 });
