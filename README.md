@@ -1,6 +1,6 @@
 # holospace
 
-meteor app intended to replace http://bsc.coop/
+meteor app intended to replace http://bsc.coop/, became more about an attempt to browse holarchical groupings.
 
 ## [meteorite](http://oortcloud.github.com/meteorite/) packages
 
